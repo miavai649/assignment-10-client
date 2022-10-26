@@ -7,7 +7,7 @@ import './Home.css';
 
 const Home = () => {
     return (
-        <div style={{height: '100vh'}} className='container d-flex justify-content-lg-between align-items-center'>
+        <div style={{height: '100vh'}} className='container mt-5 mt-lg-0 d-lg-flex justify-content-lg-between align-items-center'>
             <div className='ms-5'>
                 <div className='mb-2'>
                     <h1 className='mb-0'>We have everything,</h1>

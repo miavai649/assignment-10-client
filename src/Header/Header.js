@@ -35,7 +35,7 @@ const Header = () => {
             {dark ? (
               <Button
                 onClick={handleToggle}
-                className="ms-5"
+                className=" ms-lg-5 w-25"
                 variant="outline-dark"
               >
                 <FaMoon></FaMoon> Dark
@@ -43,7 +43,7 @@ const Header = () => {
             ) : (
               <Button
                 onClick={handleToggle}
-                className="ms-5"
+                className="ms-lg-5 w-25 my-md-2 my-lg-0"
                 variant="outline-dark"
               >
                 <FaSun></FaSun> Light
