@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Image from "../assets/logo/logo.png";
 
 const Header = () => {
@@ -12,7 +13,7 @@ const Header = () => {
     setDark(!dark);
   };
   return (
-    <Navbar collapseOnSelect expand="lg" bg="info">
+    <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
         <Navbar.Brand>
           <img
@@ -27,9 +28,10 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Courses</Nav.Link>
-            <Nav.Link href="#pricing">FAQ</Nav.Link>
-            <Nav.Link href="#pricing">Blog</Nav.Link>
+            <Nav.Link><Link to='/'>Home</Link></Nav.Link>
+            <Nav.Link><Link to='/courses'>Courses</Link></Nav.Link>
+            <Nav.Link><Link to='/faq'>FAQ</Link></Nav.Link>
+            <Nav.Link><Link to='/blog'>Blog</Link></Nav.Link>
             {dark ? (
               <Button
                 onClick={handleToggle}
