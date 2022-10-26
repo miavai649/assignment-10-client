@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 const CourseCard = () => {
   return (
     <div>
-      <Row xs={1} md={2} className="g-4">
+      <Row xs={1} md={3} className="g-4">
           <Col>
             <Card>
               <Card.Img variant="top" src="holder.js/100px160" />
