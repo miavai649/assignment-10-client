@@ -15,7 +15,7 @@ const Courses = () => {
           }
           </Row>
         </div>
-        <div class="col-4">col-4</div>
+        <div class="col-4"></div>
       </div>
     </div>
   );
