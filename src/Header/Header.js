@@ -1,24 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import Image from "../assets/logo/logo.png";
+import { Link, NavLink } from "react-router-dom";
+import Logo from "../assets/logo/logo.png";
+import { AuthContext } from "../context/AuthProvider";
 
 const Header = () => {
   const [dark, setDark] = useState(false);
   const handleToggle = () => {
     setDark(!dark);
   };
+
+  const {logOut, user} = useContext(AuthContext)
+
+  const handleSignOut = () => {
+    logOut()
+    .then(() => {})
+    .catch(e => console.error(e))
+  }
+  
   return (
     <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
         <Navbar.Brand>
           <img
             alt=""
-            src={Image}
+            src={Logo}
             width="30"
             height="30"
             className="d-inline-block align-top me-2"
@@ -51,9 +62,16 @@ const Header = () => {
             )}
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+            <Nav.Link>
+              {
+                user?.uid ?
+                  <>
+                  <Image style={{ height: "45px" }} className='me-3' roundedCircle src={user?.photoURL}></Image> 
+                 <Button onClick={handleSignOut} variant="danger">Sign out</Button>
+                  </>
+                  :
+                  <Button variant="info"><NavLink to='/signin'>Sign in</NavLink></Button> 
+              }
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
