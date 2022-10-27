@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://assignment-10-server-steel-ten.vercel.app/courses')
             },
             {
                 path: '/faq',
@@ -36,12 +36,12 @@ export const router = createBrowserRouter([
             {
                 path: '/course/:id',
                 element: <Details></Details>,
-                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-10-server-steel-ten.vercel.app/course/${params.id}`)
             },
             {
                 path: '/checkout/:title',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/checkout/${params.title}`)
+                loader: ({params}) => fetch(`https://assignment-10-server-steel-ten.vercel.app/checkout/${params.title}`)
             },
             {
                 path: '/signin',
