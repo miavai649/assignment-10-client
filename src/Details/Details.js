@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaRegFilePdf } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Details = () => {
   const course = useLoaderData();
@@ -29,7 +29,7 @@ const Details = () => {
                   </Card>
                   <h4>About the course:</h4>
           <Card.Text>{details}</Card.Text>
-          <Button variant="primary">Get premium</Button>
+          <Button variant="info"><Link to={`/checkout/${title}`}>Get premium</Link></Button>
         </Card.Body>
       </Card>
     </div>
