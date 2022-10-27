@@ -1,13 +1,15 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
 const SignIn = () => {
-  const {signInWithGoogle, signInWithGithub, signIn} = useContext(AuthContext)
+  const { signInWithGoogle, signInWithGithub, signIn } = useContext(AuthContext)
+  const [error, setError] = useState("")
+  const navigate = useNavigate()
 
   const googleProvider = new GoogleAuthProvider()
   const githubProvider = new GithubAuthProvider()
@@ -15,19 +17,27 @@ const SignIn = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle(googleProvider)
       .then(result => {
-      const user = result.user
+        const user = result.user
+        setError("")
       console.log(user)
       })
-    .catch(error => console.error(error))
+      .catch(e => {
+      console.error(e)
+        setError(e.message)
+    })
   }
 
   const handleGithubSignIn = () => {
     signInWithGithub(githubProvider)
       .then(result => {
         const user = result.user
+        setError("")
         console.log(user)
       })
-    .catch(error => console.error(error))
+      .catch(e => {
+        console.error(e)
+        setError(e.message)
+    })
   }
 
   const handleSubmit = (event) => {
@@ -40,9 +50,14 @@ const SignIn = () => {
       .then(result => {
         const user = result.user
         console.log(user)
+        setError("")
         form.reset()
+        navigate('/')
       })
-    .catch(e => console.error(e))
+      .catch(e => {
+        console.error(e)
+        setError(e.message)
+    })
   }
 
   return (
@@ -62,6 +77,7 @@ const SignIn = () => {
         <Button className="w-100 mt-1" variant="primary" type="submit">
           Sign in
         </Button>
+        <span className="text-danger">{error}</span>
         <div className="text-center my-5">
             <FaGithub onClick={handleGithubSignIn} className="me-2 fs-1"></FaGithub>
             <FaGoogle onClick={handleGoogleSignIn} className="ms-2 fs-1"></FaGoogle>

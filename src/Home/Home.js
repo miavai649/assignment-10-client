@@ -16,7 +16,7 @@ const Home = () => {
                 <div>
                     <p className='fs-5' style={{paddingRight: '100px'}}>Empower yourself with world-class courses from educator and institutions in a practical and social learning environment...</p>
                 </div>
-                <Button className='p-2' variant="info"><Link className='decoration-none fw-semibold text-light' to='/courses'>Go Courses <FaArrowRight></FaArrowRight></Link></Button>
+                <Button className='p-2' variant="info"><Link className='decoration-none fw-semibold text-light' to='/signup'>Sign up <FaArrowRight></FaArrowRight></Link></Button>
             </div>
             <div>
                 <img style={{height: '600px'}} src={Banner} alt="" />
