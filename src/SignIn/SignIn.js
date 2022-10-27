@@ -2,14 +2,17 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
 const SignIn = () => {
   const { signInWithGoogle, signInWithGithub, signIn } = useContext(AuthContext)
   const [error, setError] = useState("")
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/";
 
   const googleProvider = new GoogleAuthProvider()
   const githubProvider = new GithubAuthProvider()
@@ -19,7 +22,8 @@ const SignIn = () => {
       .then(result => {
         const user = result.user
         setError("")
-      console.log(user)
+        console.log(user)
+        toast.success('Logged in successfully')
       })
       .catch(e => {
       console.error(e)
@@ -33,6 +37,7 @@ const SignIn = () => {
         const user = result.user
         setError("")
         console.log(user)
+        toast.success('Logged in successfully')
       })
       .catch(e => {
         console.error(e)
@@ -52,7 +57,8 @@ const SignIn = () => {
         console.log(user)
         setError("")
         form.reset()
-        navigate('/')
+        toast.success('Logged in successfully')
+        navigate(from, { replace: true })
       })
       .catch(e => {
         console.error(e)

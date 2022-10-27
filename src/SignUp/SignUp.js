@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
@@ -23,6 +24,7 @@ const SignUp = () => {
         setError("")
         form.reset()
         handleUpdateUserProfile(name, photoURL)
+        toast.success('Your account has been successfully created')
         })
         .catch(e => {
             console.error(e)
