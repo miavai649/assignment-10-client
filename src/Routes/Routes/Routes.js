@@ -7,6 +7,7 @@ import Error from "../../Error/Error";
 import FAQ from "../../FAQ/FAQ";
 import Home from "../../Home/Home";
 import Main from "../../layout/Main";
+import SignIn from "../../SignIn/SignIn";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
                 path: '/checkout/:title',
                 element: <Checkout></Checkout>,
                 loader: ({params}) => fetch(`http://localhost:5000/checkout/${params.title}`)
+            },
+            {
+                path: '/signin',
+                element: <SignIn></SignIn>
             }
         ],
         errorElement: <Error></Error>
